@@ -50,7 +50,6 @@ namespace LibraryWebApp.Pages.Books
             return Page();
            
         }
-
         public IActionResult OnPostByAuthor()
         {
             Book = _context.Books.
@@ -62,16 +61,6 @@ namespace LibraryWebApp.Pages.Books
         }
         public IActionResult OnPostByAttribute()
         {
-            //var sortAsc = _context.Books.OrderBy(b => b.Attribute.Available).ToList();
-            //var sortDesc = _context.Books.OrderByDescending(b => b.Attribute.Available).ToList();
-            //if (sortAsc != sortDesc)
-            //{
-            //    Book = _context.Books.
-            //     Include(b => b.Attribute)
-            //    .Include(b => b.Author)
-            //    .Include(b => b.Category).OrderBy(b => b.Attribute.Available).ToList();
-            //}
-            //else 
             {
                 Book = _context.Books.
                  Include(b => b.Attribute)
@@ -87,7 +76,6 @@ namespace LibraryWebApp.Pages.Books
                 .Include(b => b.Author)
                 .Include(b => b.Category).OrderBy(b => b.Title).ToList();
             return Page();
-
         }
     }
 }

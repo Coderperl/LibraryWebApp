@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LibraryWebApp.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryWebApp.Pages.Books
 {
@@ -33,22 +34,24 @@ namespace LibraryWebApp.Pages.Books
         [Required]
         public Category Category { get; set; }
         [Required]
+        [BindProperty]
         public Author Author { get; set; }
         [Required]
+        [BindProperty]
         public Models.Attribute Attribute { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public IActionResult OnPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
             _context.Books.Add(Book);
             _context.SaveChangesAsync();
 
-            return Page();
+            return RedirectToPage("/Books/Index");
         }
+        
     }
 }
