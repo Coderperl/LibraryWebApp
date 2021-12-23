@@ -65,7 +65,7 @@ namespace LibraryWebApp.Pages.Books
                 Book = _context.Books.
                  Include(b => b.Attribute)
                 .Include(b => b.Author)
-                .Include(b => b.Category).OrderByDescending(b => b.Attribute.Available).ToList();
+                .Include(b => b.Category).OrderBy(b => b.Attribute.Available).ToList();
             }
             return Page();
         }
@@ -75,6 +75,42 @@ namespace LibraryWebApp.Pages.Books
                  Include(b => b.Attribute)
                 .Include(b => b.Author)
                 .Include(b => b.Category).OrderBy(b => b.Title).ToList();
+            return Page();
+        }
+        public IActionResult OnPostByCategoryDes()
+        {
+            Book = _context.Books.
+                 Include(b => b.Attribute)
+                .Include(b => b.Author)
+                .Include(b => b.Category).OrderByDescending(b => b.Category.Genre).ToList();
+            return Page();
+
+        }
+        public IActionResult OnPostByAuthorDes()
+        {
+            Book = _context.Books.
+                 Include(b => b.Attribute)
+                .Include(b => b.Author)
+                .Include(b => b.Category).
+                OrderByDescending(b => b.Author.AuthorName).ToList();
+            return Page();
+        }
+        public IActionResult OnPostByAttributeDes()
+        {
+            {
+                Book = _context.Books.
+                 Include(b => b.Attribute)
+                .Include(b => b.Author)
+                .Include(b => b.Category).OrderByDescending(b => b.Attribute.Available).ToList();
+            }
+            return Page();
+        }
+        public IActionResult OnPostByTitleDes()
+        {
+            Book = _context.Books.
+                 Include(b => b.Attribute)
+                .Include(b => b.Author)
+                .Include(b => b.Category).OrderByDescending(b => b.Title).ToList();
             return Page();
         }
     }

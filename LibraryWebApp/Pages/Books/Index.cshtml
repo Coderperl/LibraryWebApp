@@ -23,7 +23,7 @@
 </form>
 <div class="btn-group">
     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
-        Sort By
+        Sort Ascending
     </button>
     <div class="dropdown-menu">
         <form asp-page-handler="ByCategory" method="post">
@@ -42,6 +42,33 @@
             </button>
         </form>
         <form asp-page-handler="ByTitle" method="post">
+            <button class="btn btn-link" type="submit">
+                Title
+            </button>
+        </form>
+    </div>
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+        Sort Descending
+    </button>
+    <div class="dropdown-menu">
+        <form asp-page-handler="ByCategoryDes" method="post">
+            <button class="btn btn-link" type="submit">
+                Category
+            </button>
+        </form>
+        <form asp-page-handler="ByAuthorDes" method="post">
+            <button class="btn btn-link" type="submit">
+                Author
+            </button>
+        </form>
+        <form asp-page-handler="ByAttributeDes" method="post">
+            <button class="btn btn-link" type="submit">
+                Availability
+            </button>
+        </form>
+        <form asp-page-handler="ByTitleDes" method="post">
             <button class="btn btn-link" type="submit">
                 Title
             </button>
