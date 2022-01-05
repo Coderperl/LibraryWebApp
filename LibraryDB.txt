@@ -1,0 +1,114 @@
+CREATE DATABASE LibraryDB 
+
+--use [LibraryDB]
+
+drop table if exists
+[Categories],
+[Authors],
+[Attributes],
+[Books]
+
+CREATE TABLE [Categories] (
+  [id] bigint identity(1,1),
+  [genre] varchar(50),
+  PRIMARY KEY ([id])
+);
+
+CREATE TABLE [Authors] (
+  [id] bigint identity(1,1),
+  [author_name] varchar(50),
+  PRIMARY KEY ([id])
+);
+
+CREATE TABLE [Attributes] (
+  [id] bigint identity(1,1),
+  [available] varchar (1),
+  [color] varchar(10),
+  PRIMARY KEY ([id])
+);
+CREATE TABLE [Books] (
+  [Id] bigint identity(1,1),
+  [title] varchar(50),
+  [description] varchar(600),
+  [category_id] bigint foreign key references Categories(id),
+  [author_id] bigint foreign key references Authors(id),
+  [attribute_id] bigint foreign key references Attributes(id),
+  PRIMARY KEY ([Id])
+);
+
+
+insert into Categories (genre) 
+values 
+
+('Adventure'),
+('Classics'),
+('Mystery'),
+('Detective'),
+('Fantasy'),
+('Historical Fiction'),
+('Literary Fiction'),
+('Romance'),
+('Biographies'),
+('History'),
+('True Crime'),
+('Paranormal'),
+('Drama'),
+('Science Fiction'), 
+('Horror'),
+('Dystopian')
+
+insert into Authors (author_name) 
+values
+('Christopher Browning'),
+('Leo Tolstoy'),
+('Charles Dickens'),
+('George Orwell'),
+('Edgar Allan Poe'),
+('Mark Twain'),
+('Plato'),
+('Ernest Hemingway'),
+('Anton Chekhov'),
+('Franz Kafka'),
+('Friedrich Nietzsche'),
+('Aldous Huxley'),
+('H. P. Lovecraft'),
+('William Shakespeare'),
+('Agatha Christie'),
+('J. K. Rowling'),
+('J. R. R. Tolkien'),
+('Dan Brown'),
+('Aleksandr Solzjenitsyn'),
+('Fjodor Dostojevskij')
+
+insert into Attributes (available, color) 
+values 
+('y', 'black'),
+('n', 'Green'),
+('y', 'White'),
+('n', 'Blue'),
+('y', 'Grey')
+insert into Books (title,description,category_id, author_id, attribute_id)
+values
+('It', 'It is a 1986 horror novel by American author Stephen King.  
+The story follows the experiences of seven children as they are terrorized by an evil entity that exploits the fears of its victims to disguise itself while hunting its prey.',4, 1, 1),
+
+('Romeo And Juliet', 'Romeo and Juliet is a tragedy written 
+by William Shakespeare early in his career about two young Italian star-crossed lovers whose deaths ultimately reconcile their feuding families.',2,2, 4),
+
+('Murder on the Orient Express','An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside. Isolated 
+and with a killer in their midst, detective Hercule Poirot must identify the murderer – in case he or she decides to strike again.',2,3,2),
+
+('Harry Potter and the Philosopher''s Stone','Harry Potter thinks he is an ordinary boy - until he is rescued by a beetle-eyed giant of a man, enrols at Hogwarts School of
+Witchcraft and Wizardry, learns to play Quidditch, and does battle in a deadly duel. The Reason, Harry Potter is a wizard!"',2,4,3),
+
+('Lord of the rings, The fellowship of the ring', 'When the eccentric hobbit Bilbo Baggins leaves his home in the Shire, he gives his greatest treasure to his heir Frodo, a magic ring that makes its wearer invisible, 
+Because of the difficulty Bilbo has in giving the ring away, his friend the wizard Gandalf the Grey suspects that the ring is more than it appears',2,5,1),
+
+('The Davinci Code', 'The Da Vinci Code follows "symbologist" Robert Langdon and cryptologist Sophie Neveu after a murder in the Louvre Museum in Paris causes them to become 
+involved in a battle between the Priory of Sion and Opus Dei over the possibility of Jesus Christ and Mary Magdalene having had a child together.',2,6,4),
+
+('The Gulag Arcipelago', 'The Gulag Archipelago is an exhaustive and compelling account based on Solzhenitsyn''s own eight years in Soviet prison camps, on other prisoners'' 
+stories committed to his photographic memory while in detention, and on letters and historical sources.',5,7,5),
+('Crime And Punishment', 'Crime and Punishment follows the mental anguish and moral dilemmas of Rodion Raskolnikov, an impoverished ex-student in Saint Petersburg who plans to kill an unscrupulous pawnbroker for her money. Before the killing, Raskolnikov believes that with the money he could liberate himself from poverty and go on to perform great deeds. However, once it is done he finds himself racked with confusion, paranoia, 
+and disgust for his actions. His justifications disintegrate completely as he struggles with guilt and horror and confronts the real-world consequences of his deed.',4,8,2)
+
